@@ -1,5 +1,6 @@
 cartodb <-
-function(account.name, api.key = NULL) {
+function(account.name, api.key = NULL, asJson = TRUE) {
+    .CartoDB$data$asJson<-asJson
     if(is.character(api.key)){
         .CartoDB$data$api.key<-api.key   
     } else{

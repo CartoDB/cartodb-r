@@ -7,9 +7,14 @@ cartodb.collection <- function(table.name = NULL, table.columns = NULL, table.qu
         }
     }
     if (is.character(table.query)){
-        cartodb.collection.get<-getURL(geo.url)
+        url <- cartodbSqlApi()
+        cartodb.collection.get<-getURL(URLencode(paste(url,"q=",table.query,sep='')))
         cartodb.collection.data<-fromJSON(geo.get)
-        return(as.character(cartodb.collection.data$rows))
+        if(.CartoDB$data$asJson){
+            return(jsonToDataFrame(as.character(cartodb.collection.data$rows)))
+        } else {
+            return(as.character(cartodb.collection.data$rows))
+        }
     } else {
         warning("You must supply a table name")
     }
