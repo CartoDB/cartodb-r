@@ -9,5 +9,5 @@ Suggests: MASS
 Description: A short (one paragraph) description of what
 the package does and why it may be useful.
 License: GPL-3
-URL: http://www.r-project.org, http://www.another.url
-BugReports: http://pkgname.bugtracker.url
+URL: http://www.cartodb.com, https://github.com/andrewxhill/cartodb-r
+BugReports: https://github.com/andrewxhill/cartodb-r/issues
