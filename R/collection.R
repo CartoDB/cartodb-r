@@ -1,15 +1,15 @@
-cartodb.collection <- function(table.name = NULL, table.columns = NULL, table.query = NULL) {
+cartodb.collection <- function(table.name = NULL, table.columns = NULL, table.sql = NULL) {
     if (is.character(table.name)){
         if (is.character(table.columns)){
-            table.query <- paste("SELECT ", paste(table.columns, collapse=","), " FROM ", table.name,sep='')
+            table.sql <- paste("SELECT ", paste(table.columns, collapse=","), " FROM ", table.name,sep='')
         } else {
-            table.query <- paste("SELECT * FROM ", table.name,sep='')
+            table.sql <- paste("SELECT * FROM ", table.name,sep='')
         }
     }
-    if (is.character(table.query)){
+    if (is.character(table.sql)){
         url <- cartodbSqlApi()
-        cartodb.collection.get<-getURL(URLencode(paste(url,"q=",table.query,sep='')))
-        cartodb.collection.data<-fromJSON(geo.get)
+        cartodb.collection.get<-getURL(URLencode(paste(url,"q=",table.sql,sep='')))
+        cartodb.collection.data<-fromJSON(cartodb.collection.get)
         if(.CartoDB$data$asJson){
             return(jsonToDataFrame(as.character(cartodb.collection.data$rows)))
         } else {
