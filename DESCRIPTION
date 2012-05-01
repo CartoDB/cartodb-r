@@ -1,0 +1,13 @@
+Package: CartoDB
+Version: 0.1-0
+Date: 2012-05-01
+Title: My First Collection of Functions
+Authors@R: c(person("AW", "Hill", role = c("aut", "cre"),
+                  email = "Andrew@vizzuality.com"))
+Depends: R (>= 2.14), nlme
+Suggests: MASS
+Description: A short (one paragraph) description of what
+the package does and why it may be useful.
+License: GPL-3
+URL: http://www.r-project.org, http://www.another.url
+BugReports: http://pkgname.bugtracker.url
