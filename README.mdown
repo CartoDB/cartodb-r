@@ -12,17 +12,17 @@ Andrew Hill
 
 The CartoDB R package requires the following external packages
 
-   RCurl
+- RCurl
    
-   RJSONIO
+- RJSONIO
    
 ### Installation
        
 To install this package from the source code available here
 
-    download the file
+- download the file
     
-    change directory to the location downloaded
+- change directory to the location downloaded
             
 `> install.packages("infochimps_0.3.tar.gz", repos=NULL, type="source")`
            
