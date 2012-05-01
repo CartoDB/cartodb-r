@@ -1,9 +1,9 @@
 cartodb.collection <- function(table.name = NULL, table.columns = NULL, table.query = NULL) {
     if (is.character(table.name)){
         if (is.character(table.columns)){
-            table.query <- paste("SELECT ", paste(table.columns, collapse=","), " FROM ", table.name)
+            table.query <- paste("SELECT ", paste(table.columns, collapse=","), " FROM ", table.name,sep='')
         } else {
-            table.query <- paste("SELECT * FROM ", table.name)
+            table.query <- paste("SELECT * FROM ", table.name,sep='')
         }
     }
     if (is.character(table.query)){
