@@ -24,5 +24,5 @@ To install this package from the source code available here
     
 - change directory to the location downloaded
             
-`> install.packages("infochimps_0.3.tar.gz", repos=NULL, type="source")`
+`> install.packages("cartodb_0.1.tar.gz", repos=NULL, type="source")`
            
