@@ -1,7 +1,7 @@
 Package: CartoDB
 Version: 0.1-0
 Date: 2012-05-01
-Title: My First Collection of Functions
+Title: R wrapper for CartoDB APIs
 Authors@R: c(person("AW", "Hill", role = c("aut", "cre"),
                   email = "Andrew@vizzuality.com"))
 Depends: R (>= 2.14), RCurl, RJSONIO

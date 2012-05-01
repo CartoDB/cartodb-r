@@ -7,7 +7,15 @@ For more information on the these APIs see http://developers.cartodb.com/
 Andrew Hill
 
 - Email: andrew@vizzuality.com
+ 
+### Requirements
 
+The CartoDB R package requires the following external packages
+
+   RCurl
+   
+   RJSONIO
+   
 ### Installation
        
 To install this package from the source code available here
@@ -17,4 +25,4 @@ To install this package from the source code available here
     change directory to the location downloaded
             
 `> install.packages("infochimps_0.3.tar.gz", repos=NULL, type="source")`
-            
+           
