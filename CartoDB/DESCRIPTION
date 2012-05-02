@@ -1,0 +1,9 @@
+Package: CartoDB
+Type: Package
+Title: Interface to data on CartoDB
+Version: 1.0
+Date: 2012-05-02
+Author: Andrew Hill
+Maintainer: Andrew Hill <andrew@vizzuality.com>
+Description: Allows you to quickly and easily use data hosted on your CartoDB account through R.
+License: GPL-3

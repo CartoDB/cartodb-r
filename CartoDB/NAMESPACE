@@ -1,0 +1,7 @@
+exportPattern("^[[:alpha:]]+")
+export('cartodb')
+export('cartodb.collection')
+export('cartodb.tile')
+export('cartodbMapsApi')
+export('cartodbSqlApi')
+export('jsonToDataFrame')
