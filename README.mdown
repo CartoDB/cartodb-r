@@ -70,17 +70,17 @@ To install this package from the source code available here
 
 - String type of geometry to return with records, doesn't work with **sql**
 
-- default = NULL, same as "WKB" and "the_geom"
+- default = **NULL**, same as "**WKB**" and "**the_geom**"
 
-- "XY", returns the_geom_x and the_geom_y
+- "**XY**", returns the_geom_x and the_geom_y
 
-- "GeoJSON", return the_geom as GeoJSON text
+- "**GeoJSON**", return the_geom as GeoJSON text
 
-- "WKT", returns the_geom as Well-known text (for rgeos)
+- "**WKT**", returns the_geom as Well-known text (for rgeos)
 
 *omitNull*
 
-- Boolean if TRUE omits all records with NULL the_geom **sql**
+- Boolean if TRUE omits all records with NULL the_geom, doesn't work with **sql**
 
 - default = FALSE
 
@@ -144,7 +144,7 @@ A very simple map of butterflies in Mexico
 library(RCurl)
 library(RJSONIO)
 library(CartoDB)
-library("maps")
+library(maps)
 
 # Setup your connection
 cartodb_account_name = "examples"
