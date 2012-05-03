@@ -111,7 +111,7 @@ To install this package from the source code available here
 Set up your first read-only CartoDB connection
 
 ```R
-#Import required packages
+# Import required packages
 library(RCurl)
 library(RJSONIO)
 library(CartoDB)
