@@ -98,7 +98,7 @@ Other parameters for cartodb.collection
 
 - Overrides all other parameters except **asJson**
 
-`cartodb.collection(sql = "SELECT column1 FROM your_table")`
+- `cartodb.collection(sql = "SELECT column1 FROM your_table")`
 
 ### Examples for CartoDB in R
 
