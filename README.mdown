@@ -2,7 +2,7 @@
 
 For more information on the these APIs see http://developers.cartodb.com/
 
-## Why user CartoDB with R?
+## Why use CartoDB with R?
 
 - All the power of PostgreSQL/PostGIS without the need to install all the libraries locally
 
