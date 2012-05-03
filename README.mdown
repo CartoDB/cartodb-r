@@ -38,7 +38,7 @@ To install this package from the source code available here
 
 ### Using CartoDB in R
 
-Set up your first CartoDB connection
+Set up your first read-only CartoDB connection
 
 ```R
 # Import required packages
@@ -51,8 +51,9 @@ cartodb(cartodb_account_name)
 
 # You can quickly test that your connection works
 cartodb.test()
-# # [1] TRUE
-
+# #     success
+# #  1    TRUE
 ```
+
 
            

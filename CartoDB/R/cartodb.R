@@ -22,9 +22,12 @@ cartodb.test <- function() {
     url <- cartodbSqlApi()
     records<-getURL(URLencode(paste(url,"q=SELECT 1",sep='')))
     json<-fromJSON(records[[1]])
+    response<-data.frame(success=FALSE)
     if ( 'rows' %in% names(json)) {
-        return(TRUE)
+        response$success = TRUE
     } else {
-        return(FALSE)
+        warning(paste("Be sure that your account name,",.CartoDB$data$account.name, "is spelled correctly and that you have a working connection to the internet."))
+        response$success = FALSE
     }
+    return(response)
 }
