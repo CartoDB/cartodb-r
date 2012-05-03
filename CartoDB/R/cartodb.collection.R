@@ -1,5 +1,5 @@
 cartodb.collection <-
-function(name = NULL, columns = NULL, geomAs = NULL, limit = NULL, sql = NULL, asJson = FALSE) {
+function(name = NULL, columns = NULL, geomAs = NULL, omitNull = FALSE, limit = NULL, sql = NULL, asJson = FALSE) {
     if (is.character(name)){
         # Method to handle geomAs parameter
         geomCol <- function(option) { 
@@ -22,6 +22,9 @@ function(name = NULL, columns = NULL, geomAs = NULL, limit = NULL, sql = NULL, a
             sql <- paste("SELECT ", paste(columns, collapse=","), " FROM ", name,sep='')
         } else {
             sql <- paste("SELECT *, NULL as the_geom_webmercator,",geomCol(geomAs)," FROM ", name,sep='')
+        }
+        if (omitNull==TRUE){
+            sql <- paste(sql,"WHERE the_geom IS NOT NULL")
         }
         if (is.numeric(limit)) {
             sql <- paste(sql,"LIMIT",limit)

@@ -52,19 +52,19 @@ To install this package from the source code available here
 
 `cartodb("your-account-name", api.key="optional-key-for-writes")`
 
-Testing a connection
+**Testing a connection**
 
 `cartodb.test()`
 
-Getting table data
+**Getting table data**
 
 `cartodb.collection("table_name")`
 
-Getting select columns
+**Getting select columns**
 
 `cartodb.collection("table_name", columns=c("column1","column2"))`
 
-Other parameters for cartodb.collection
+**Other parameters for cartodb.collection**
 
 *geomAs*
 
@@ -77,6 +77,12 @@ Other parameters for cartodb.collection
 - "GeoJSON", return the_geom as GeoJSON text
 
 - "WKT", returns the_geom as Well-known text (for rgeos)
+
+*omitNull*
+
+- Boolean if TRUE omits all records with NULL the_geom **sql**
+
+- default = FALSE
 
 *limit*
 
@@ -127,30 +133,36 @@ Create a new data.frame out of one of your tables
 cartodb_account_name = "examples"
 cartodb(cartodb_account_name)
 
-# Download table 
+# Download the first 10 records of a table with the_geom transformed to X,Y coordinates
 table_name <- "monarch"
 data <- cartodb.collection(table_name, geomAs="XY", limit=10)
 ```
-By default, the cartodb client will return all columns just as they are in your table. However using 
 
-`geomAs="XY"`
-
-will turn your the_geom column into two columns, the_geom_x and the_geom_y
+A very simple map of butterflies in Mexico
 
 ```R
+library(RCurl)
+library(RJSONIO)
+library(CartoDB)
+library("maps")
 
+# Setup your connection
+cartodb_account_name = "examples"
+cartodb(cartodb_account_name)
+
+# Grab your data
+data <- cartodb.collection("monarch", geomAs="XY", omitNull=TRUE)
+
+# Create a very basic map
+map(regions="mexico", lwd=0.05, lty=1)
+points(data$the_geom_x, data$the_geom_y, col="red")
+title("Monarch butterfly records in GBIF -- Mexico Region")
 ```
 
-```R
+### TODOs
 
-```
+- Enable write methods
 
-```R
+- Better type casting from JSON to R (all string :( now)
 
-```
-
-```R
-
-```
-
-           
+- Finish tile example (require PNG support)
