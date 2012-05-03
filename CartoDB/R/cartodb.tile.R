@@ -1,14 +1,15 @@
 cartodb.tile <-
-function(tile.x, tile.y, tile.z, table.name = NULL, table.query = NULL) {
-    if (is.number(tile.x) && is.number(tile.y) && is.number(tile.z)){
-        if (is.character(table.name)){
+function(name = NULL, x = NULL, y = NULL, z = NULL, sql = NULL) {
+    if (is.numeric(x) && is.numeric(y) && is.numeric(z)){
+        if (is.character(name)){
             url <- cartodbMapsApi()
-            if (is.character(table.query)){
-                cartodb.tile.png <- getURL(URLencode(paste(url,table.name,"/",z,"/",x,"/",y,".png",sep='')))
+            if (is.character(sql)){
+                cartodb.tile <- URLencode(paste(url,name,"/",z,"/",x,"/",y,".png?q=",sql,sep=''))
             } else { 
-                cartodb.tile.png <- getURL(URLencode(paste(url,table.name,"/",z,"/",x,"/",y,".png?q=",table.query,sep='')))
+                cartodb.tile <- URLencode(paste(url,name,"/",z,"/",x,"/",y,".png",sep=''))
             }
-            return(cartodb.tile.png)
+            warning("tile support in development, tile url returned")
+            return(cartodb.tile)
         } else {
             warning("You must supply the table name you are querying")
         }

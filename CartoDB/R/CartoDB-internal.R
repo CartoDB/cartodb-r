@@ -25,13 +25,13 @@
 #         options(op.utils[toset])
 # }
 
-.onLoad<-function(libname, pkgname) {
-    if(is.null(.CartoDB$data)==FALSE) {
-        .CartoDB$data <- list(
-            api.key=NULL,
-            account.name=NULL,
-            sqlapi=".cartodb.com/api/v2/sql",
-            mapsapi=".cartodb.com/tiles/"
-            )
-    }
-}
+# .onLoad<-function(libname, pkgname) {
+#     if(is.null(.CartoDB$data)==FALSE) {
+#         .CartoDB$data <- list(
+#             api.key=NULL,
+#             account.name=NULL,
+#             api.sql=".cartodb.com/api/v2/sql",
+#             api.maps=".cartodb.com/tiles/"
+#             )
+#     }
+# }
