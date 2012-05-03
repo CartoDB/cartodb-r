@@ -2,6 +2,16 @@
 
 For more information on the these APIs see http://developers.cartodb.com/
 
+## Why user CartoDB with R?
+
+- All the power of PostgreSQL/PostGIS without the need to install all the libraries locally
+
+- No, seriously, power! Make queries on huge datasets only grabbing the bits and pieces formatted just as you need them
+
+- Database simplicity, turn CartoDB tables directly into data.frames without any hassle
+
+- Portability! Now share your code with collaborators without having to transfer databases etc
+
 ### Contact
 
 Andrew Hill
@@ -32,11 +42,65 @@ To install this package from the source code available here
             
 `> install.packages("cartodb_0.1.tar.gz", repos=NULL, type="source")`
 
-- alternatively using devtools
+- alternatively using devtools (untested, please let me know!)
 
 `> install_github("cartodb-r", "Vizzuality")`
 
-### Using CartoDB in R
+### Methods
+
+Connecting
+
+`cartodb("your-account-name", api.key="optional-key-for-writes")`
+
+Testing a connection
+
+`cartodb.test()`
+
+Getting table data
+
+`cartodb.collection("table_name")`
+
+Getting select columns
+
+`cartodb.collection("table_name", columns=c("column1","column2"))`
+
+Other parameters for cartodb.collection
+
+**geomAs**
+
+- String type of geometry to return with records, doesn't work with **sql**
+
+- default = NULL, same as "WKB" and "the_geom"
+
+- "XY", returns the_geom_x and the_geom_y
+
+- "GeoJSON", return the_geom as GeoJSON text
+
+- "WKT", returns the_geom as Well-known text (for rgeos)
+
+**limit**
+
+- Integer limit to number of records returned, doesn't work with **sql**
+
+- default = NULL
+
+**asJson**
+
+- Boolean whether to convert your data from a JSON string to data.frame
+
+- default = TRUE
+
+**sql**
+
+- String of SQL to query records directly
+
+- default = NULL
+
+- Overrides all other parameters except **asJson**
+
+`cartodb.collection(sql = "SELECT column1 FROM your_table")`
+
+### Examples for CartoDB in R
 
 Set up your first read-only CartoDB connection
 
@@ -44,9 +108,10 @@ Set up your first read-only CartoDB connection
 # Import required packages
 library(RCurl)
 library(RJSONIO)
+library(CartoDB)
 
 # Setup your connection
-cartodb_account_name = "viz2"
+cartodb_account_name = "examples"
 cartodb(cartodb_account_name)
 
 # You can quickly test that your connection works
@@ -55,5 +120,37 @@ cartodb.test()
 # #  1    TRUE
 ```
 
+Create a new data.frame out of one of your tables
+
+```R
+# Setup your connection
+cartodb_account_name = "examples"
+cartodb(cartodb_account_name)
+
+# Download table 
+table_name <- "monarch"
+data <- cartodb.collection(table_name, geomAs="XY", limit=10)
+```
+By default, the cartodb client will return all columns just as they are in your table. However using 
+
+`geomAs="XY"`
+
+will turn your the_geom column into two columns, the_geom_x and the_geom_y
+
+```R
+
+```
+
+```R
+
+```
+
+```R
+
+```
+
+```R
+
+```
 
            
