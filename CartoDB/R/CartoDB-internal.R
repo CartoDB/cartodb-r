@@ -30,7 +30,6 @@
         .CartoDB$data <- list(
             api.key=NULL,
             account.name=NULL,
-            asJson=TRUE,
             sqlapi=".cartodb.com/api/v2/sql",
             mapsapi=".cartodb.com/tiles/"
             )

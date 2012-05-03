@@ -10,11 +10,16 @@ function(table.name = NULL, table.columns = NULL, table.sql = NULL, asJson = FAL
     if (is.character(table.sql)){
         url <- cartodbSqlApi()
         cartodb.collection.get<-getURL(URLencode(paste(url,"q=",table.sql,sep='')))
-        cartodb.collection.data<-fromJSON(cartodb.collection.get)
-        if(asJson){
-            return(jsonToDataFrame(as.character(cartodb.collection.data$rows)))
+        if(asJson==FALSE){
+            cartodb.collection.json<-fromJSON(cartodb.collection.get[[1]])
+            if ( 'rows' %in% names(cartodb.collection.json)) {
+                return(jsonToDataFrame(cartodb.collection.json$rows))
+            } else {
+                warning(cartodb.collection.json)
+                return(NULL)
+            }
         } else {
-            return(as.character(cartodb.collection.data$rows))
+            return(as.character(cartodb.collection.get))
         }
     } else {
         warning("You must supply a table name")
