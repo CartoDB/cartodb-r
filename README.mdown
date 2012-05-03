@@ -48,7 +48,7 @@ To install this package from the source code available here
 
 ### Methods
 
-Connecting
+**Connecting**
 
 `cartodb("your-account-name", api.key="optional-key-for-writes")`
 
@@ -66,7 +66,7 @@ Getting select columns
 
 Other parameters for cartodb.collection
 
-**geomAs**
+*geomAs*
 
 - String type of geometry to return with records, doesn't work with **sql**
 
@@ -78,19 +78,19 @@ Other parameters for cartodb.collection
 
 - "WKT", returns the_geom as Well-known text (for rgeos)
 
-**limit**
+*limit*
 
 - Integer limit to number of records returned, doesn't work with **sql**
 
 - default = NULL
 
-**asJson**
+*asJson*
 
 - Boolean whether to convert your data from a JSON string to data.frame
 
 - default = TRUE
 
-**sql**
+*sql*
 
 - String of SQL to query records directly
 
@@ -98,7 +98,7 @@ Other parameters for cartodb.collection
 
 - Overrides all other parameters except **asJson**
 
-- `cartodb.collection(sql = "SELECT column1 FROM your_table")`
+- example: `cartodb.collection(sql = "SELECT column1 FROM your_table")`
 
 ### Examples for CartoDB in R
 
