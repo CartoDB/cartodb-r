@@ -7,16 +7,13 @@ jsonToDataFrame
 \description{
 }
 \usage{
-jsonToDataFrame(json, all.names)
+jsonToDataFrame(json)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{json}{
-%%     ~~Describe \code{json} here~~
-}
-  \item{all.names}{
-%%     ~~Describe \code{all.names} here~~
-}
+  JSON string
+}=
 }
 \details{
 }

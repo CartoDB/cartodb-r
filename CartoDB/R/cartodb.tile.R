@@ -26,7 +26,7 @@ function(name = NULL, x = NULL, y = NULL, z = NULL, sql = NULL, style=NULL, meth
                         file = buf@ref)
                         cartodb.img = as(buf, "raw")
                     return(cartodb.img)
-                } else if(method=="PNG") {
+                } else if(method=="png") {
                     warning("TODO: method to return in-memory PNG")
                 }
             } else {

@@ -30,6 +30,16 @@ function(name=NULL,geomAs=NULL,columns=NULL,omitNull=FALSE,limit=NULL){
     }
     return(sql)
 }
+jsonToDataFrame <-
+function(json) {
+    names<-names(json[[1]])
+    jsonAsVector<-lapply(json, rbind)
+    col<-lapply(jsonAsVector, function(x) match(names, colnames(x)))
+    fixed<-lapply(1:length(jsonAsVector), function(i) rbind(as.character(jsonAsVector[[i]][,col[[i]]])))
+    df<-data.frame(do.call(rbind, fixed), stringsAsFactors=FALSE)
+    names(df)<-names
+    return(df)
+}
 cartodb.collection <-
 function(name = NULL, columns = NULL, geomAs = NULL, omitNull = FALSE, limit = NULL, sql = NULL, method = "dataframe",urlOnly=FALSE) {
     if (is.character(name)){

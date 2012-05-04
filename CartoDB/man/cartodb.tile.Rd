@@ -8,78 +8,39 @@ Given a set of XYZ can get a tile with rendered data.
 Can be useful for R driven maps.
 }
 \usage{
-cartodb.tile(tile.x, tile.y, tile.z, table.name = NULL, table.query = NULL)
+cartodb.tile(name = NULL, x = NULL, y = NULL, z = NULL, sql = NULL, style=NULL, method="bytes", urlOnly=FALSE)
 }
 \arguments{
-  \item{tile.x}{
-%%     ~~Describe \code{tile.x} here~~
+  \item{table}{
+  The name of the CartoDB table you are requesting a tile from
 }
-  \item{tile.y}{
-%%     ~~Describe \code{tile.y} here~~
+  \item{x}{
+  Numeric x coordinate of tile
 }
-  \item{tile.z}{
-%%     ~~Describe \code{tile.z} here~~
+  \item{y}{
+  Numeric y coordinate of tile
 }
-  \item{table.name}{
-%%     ~~Describe \code{table.name} here~~
+  \item{z}{
+  Numeric zoom value for tile
 }
-  \item{table.query}{
-%%     ~~Describe \code{table.query} here~~
+  \item{sql}{
+  An SQL query for querying dynamic tiles from CartoDB
 }
+  \item{style}{
+  A Carto style string to restyle tiles dynamically (see http://developers.cartodb.com/)
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
+  \item{method}{
+  The format of the data you want returned, "bytes". "png" is in development
 }
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
 }
 \author{
 Andrew Hill <andrew@vizzuality.com>
 }
-\note{
-%%  ~~further notes~~
-}
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (tile.x, tile.y, tile.z, table.name = NULL, table.query = NULL) 
-{
-    if (is.number(tile.x) && is.number(tile.y) && is.number(tile.z)) {
-        if (is.character(table.name)) {
-            url <- cartodbMapsApi()
-            if (is.character(table.query)) {
-                cartodb.tile.png <- getURL(URLencode(paste(url, 
-                  table.name, "/", z, "/", x, "/", y, ".png", 
-                  sep = "")))
-            }
-            else {
-                cartodb.tile.png <- getURL(URLencode(paste(url, 
-                  table.name, "/", z, "/", x, "/", y, ".png?q=", 
-                  table.query, sep = "")))
-            }
-            return(cartodb.tile.png)
-        }
-        else {
-            warning("You must supply the table name you are querying")
-        }
-    }
-    else {
-        warning("You must supply XYZ coordinates for your tile")
-    }
-  }
+cartodb_account_name = "examples"; 
+cartodb(cartodb_account_name)
+tile<-cartodb.tile("earthquakes", 0, 0, 0, urlOnly=TRUE)
+tile
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
