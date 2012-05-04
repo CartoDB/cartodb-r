@@ -174,7 +174,9 @@ plot(0:1,0:1,type="n",xlab='',ylab='',axes=FALSE, frame.plot=FALSE)
 rasterImage(r,0,0,1,1)
 ```
 
-The below is a bit more advanced method for plotting geospatial data onto a properly projected map. This requires a few extra external libraries, but the results can be amazing.
+The below is a bit more advanced method for plotting geospatial data onto a properly projected map. This requires a few extra external libraries, but the results can be very useful.
+
+<img src="http://i.imgur.com/CuOT3.png" width="900px"/>
 
 ```R
 library(rgdal)
@@ -204,8 +206,8 @@ riyadh.rails<-readOGR(railUrl,p4s=crs,layer = 'OGRGeoJSON')
 
 # Plot the polygons and roads on a small map
 plot(riyadh.poly,axes=TRUE, border="gray",col="#A2CD5A",bg="white")
-lines(riyadh.roads, col="#3a3a3a", lwd=0.1)
-lines(riyadh.rails, col="burlywood3", lwd=0.8)
+lines(riyadh.roads, col="#3a3a3a", lwd=1)
+lines(riyadh.rails, col="burlywood3", lwd=3)
 ```
 
 ### TODOs
