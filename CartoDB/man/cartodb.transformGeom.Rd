@@ -15,8 +15,6 @@ cartodb.transformGeom(option=NULL)
   Defines how you want your geometries returned. Accepted values include, NULL, "the_geom", "WKB", "WKT", "GeoJSON", "XY"
 }
 }
-\author{
-}
 \examples{
 cartodb.transformGeom(option="WKT")
 }

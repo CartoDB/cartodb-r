@@ -10,8 +10,6 @@ Tests that cartodb connection is valid. Will also test secure connection if an A
 \usage{
 cartodb.test()
 }
-\author{
-}
 \examples{
 cartodb.test()
 }

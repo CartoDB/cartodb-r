@@ -16,8 +16,6 @@ jsonToDataFrame(json)
   JSON string
 }=
 }
-\seealso{
-}
 \examples{
 jsonToDataFrame("{g: 1}")
 }
