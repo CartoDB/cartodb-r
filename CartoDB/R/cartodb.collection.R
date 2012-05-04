@@ -1,5 +1,5 @@
 cartodb.collection <-
-function(name = NULL, columns = NULL, geomAs = NULL, omitNull = FALSE, limit = NULL, sql = NULL, asJson = FALSE) {
+function(name = NULL, columns = NULL, geomAs = NULL, omitNull = FALSE, limit = NULL, sql = NULL, format = "DF", returnUrl = FALSE) {
     if (is.character(name)){
         # Method to handle geomAs parameter
         geomCol <- function(option) { 
@@ -11,11 +11,11 @@ function(name = NULL, columns = NULL, geomAs = NULL, omitNull = FALSE, limit = N
             else if (option=="the_geom") { return('the_geom') }
             else { return('ST_X(the_geom) AS the_geom_x, ST_Y(the_geom) AS the_geom_y,null as the_geom') }
         }
-        if (is.list(columns)){
+        if (is.character(columns)){
             # replace the_geom with a processed version if asked for
             if ( 'the_geom' %in% columns) {
                 if(!is.null(geomAs) && geomAs!="the_geom"){
-                    replace("the_geom",columns,geomCol(geomAs))
+                    columns[columns=="the_geom"] = geomCol(geomAs)
                 }
             }
             
@@ -29,11 +29,18 @@ function(name = NULL, columns = NULL, geomAs = NULL, omitNull = FALSE, limit = N
         if (is.numeric(limit)) {
             sql <- paste(sql,"LIMIT",limit)
         }
+        warning(sql)
     }
     if (is.character(sql)){
         url <- cartodbSqlApi()
-        cartodb.collection.get<-getURL(URLencode(paste(url,"q=",sql,sep='')))
-        if(asJson==FALSE){
+        if (format=="GeoJSON"){
+            url <- URLencode(paste(url,"format=geojson&q=",sql,sep=''))
+            if (returnUrl==TRUE) return(url)
+            cartodb.collection.get<-getURL(url)
+        } else if(format=="DF"){
+            url <- URLencode(paste(url,"q=",sql,sep=''))
+            if (returnUrl==TRUE) return(url)
+            cartodb.collection.get<-getURL(url)
             cartodb.collection.json<-fromJSON(cartodb.collection.get[[1]])
             if ( 'rows' %in% names(cartodb.collection.json)) {
                 df <- jsonToDataFrame(cartodb.collection.json$rows)
