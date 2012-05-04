@@ -2,7 +2,7 @@
 
 For more information on the these APIs see http://developers.cartodb.com/
 
-<img src="http://i.imgur.com/IGZ6T.png" width="900px"/>
+<img src="http://i.imgur.com/x3SWS.png" alt="" title="Hosted by imgur.com" width="900px" />
 
 ## Why use CartoDB with R?
 
@@ -226,3 +226,8 @@ lines(riyadh.rails, col="burlywood3", lwd=3)
 - Enable write methods
 
 - Better type casting from JSON to R (all string :( now)
+
+- Set remote map style method
+
+- Get embed/share url method
+

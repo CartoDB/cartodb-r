@@ -1,7 +1,7 @@
 Package: CartoDB
 Type: Package
 Title: Interface to data on CartoDB
-Version: 1.0
+Version: 1.1
 Date: 2012-05-02
 Author: Andrew Hill
 Maintainer: Andrew Hill <andrew@vizzuality.com>
