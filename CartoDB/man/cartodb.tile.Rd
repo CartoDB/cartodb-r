@@ -11,7 +11,7 @@ Can be useful for R driven maps.
 cartodb.tile(name = NULL, x = NULL, y = NULL, z = NULL, sql = NULL, style=NULL, method="bytes", urlOnly=FALSE)
 }
 \arguments{
-  \item{table}{
+  \item{name}{
   The name of the CartoDB table you are requesting a tile from
 }
   \item{x}{
@@ -31,6 +31,9 @@ cartodb.tile(name = NULL, x = NULL, y = NULL, z = NULL, sql = NULL, style=NULL, 
 }
   \item{method}{
   The format of the data you want returned, "bytes". "png" is in development
+}
+  \item{urlOnly}{
+  Boolean if true only returns the URL of the tile but doesn't fetch
 }
 }
 \author{
