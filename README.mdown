@@ -2,6 +2,8 @@
 
 For more information on the these APIs see http://developers.cartodb.com/
 
+<img src="http://i.imgur.com/IGZ6T.png" width="900px"/>
+
 ## Why use CartoDB with R?
 
 - All the power of PostgreSQL/PostGIS without the need to install all the libraries locally
@@ -202,15 +204,15 @@ cartodb(cartodb_account_name)
 crs <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 
 # Get OSM polygons for Riyadh
-polyUrl <- cartodb.collection("riyadh_osm_polygon", columns=c("cartodb_id","the_geom"), omitNull=TRUE,format="GeoJSON", returnUrl=TRUE)
+polyUrl <- cartodb.collection("riyadh_osm_polygon", columns=c("cartodb_id","the_geom"), omitNull=TRUE,method="GeoJSON", urlOnly=TRUE)
 riyadh.poly<-readOGR(polyUrl,p4s=crs,layer = 'OGRGeoJSON')
 
 # Get OSM roads for Riyadh
-roadUrl <- cartodb.collection("riyadh_osm_roads", columns=c("cartodb_id","the_geom"), omitNull=TRUE,format="GeoJSON", returnUrl=TRUE)
+roadUrl <- cartodb.collection("riyadh_osm_roads", columns=c("cartodb_id","the_geom"), omitNull=TRUE,method="GeoJSON", urlOnly=TRUE)
 riyadh.roads<-readOGR(roadUrl,p4s=crs,layer = 'OGRGeoJSON')
 
 # Get OSM railways for Riyadh
-railUrl <- cartodb.collection(sql="SELECT cartodb_id, the_geom FROM riyadh_osm_line WHERE railway IS NOT NULL",format="GeoJSON",returnUrl=TRUE)
+railUrl <- cartodb.collection(sql="SELECT cartodb_id, the_geom FROM riyadh_osm_line WHERE railway IS NOT NULL",method="GeoJSON",urlOnly=TRUE)
 riyadh.rails<-readOGR(railUrl,p4s=crs,layer = 'OGRGeoJSON')
 
 # Plot the polygons and roads on a small map
