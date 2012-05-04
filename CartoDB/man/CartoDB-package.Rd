@@ -21,10 +21,4 @@ License: \tab GPL-3\cr
 \author{
 Andrew W. Hill <andrew@vizzuality.com>
 }
-\references{
-}
 \keyword{ package }
-\seealso{
-}
-\examples{
-}

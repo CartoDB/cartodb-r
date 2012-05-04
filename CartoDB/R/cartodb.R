@@ -14,7 +14,7 @@ function(account.name, api.key = NULL) {
     if(is.character(account.name)){
         .CartoDB$data$account.name<-account.name
     } else{
-        error("Account name must be a string")
+        warning("Account name must be a string")
     }
 }
 

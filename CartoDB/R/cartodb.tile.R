@@ -1,16 +1,22 @@
 cartodb.tile <-
-function(name = NULL, x = NULL, y = NULL, z = NULL, sql = NULL, method="bytes") {
+function(name = NULL, x = NULL, y = NULL, z = NULL, sql = NULL, style=NULL, method="bytes", urlOnly=FALSE) {
     if (is.numeric(x) && is.numeric(y) && is.numeric(z)){
         if (method=="extents") {
             warning("TODO: method to return tile extents")
         } else if (is.character(name)){
             url <- cartodbMapsApi()
             if (is.character(sql)){
-                cartodb.tile <- URLencode(paste(url,name,"/",z,"/",x,"/",y,".png?q=",sql,sep=''))
+                cartodb.tile <- URLencode(paste(url,name,"/",z,"/",x,"/",y,".png?sql=",sql,sep=''))
+                if(is.character(style)){
+                    cartodb.tile <- paste(cartodb.tile,"&style=",URLencode(style),sep='')
+                }
             } else { 
                 cartodb.tile <- URLencode(paste(url,name,"/",z,"/",x,"/",y,".png",sep=''))
+                if(is.character(style)){
+                    cartodb.tile <- paste(cartodb.tile,"?style=",URLencode(style),sep='')
+                }
             }
-            if(method=="URL") {
+            if(urlOnly==TRUE) {
                 return(cartodb.tile)
             } else if(url.exists(cartodb.tile)){
                 if(method=="bytes") {

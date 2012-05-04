@@ -32,7 +32,7 @@ Using rgeos can greatly improve mapping capability in R. It also plays nice with
 
 - rgeos
 
-### Installation
+### Installation from source
        
 To install this package from the source code available here
 
@@ -42,7 +42,10 @@ To install this package from the source code available here
             
 `> install.packages("cartodb_0.1.tar.gz", repos=NULL, type="source")`
 
-- alternatively using devtools (untested, please let me know!)
+
+### Installation using devtools
+
+- alternatively you can install straight from GitHub using <a href="https://github.com/hadley/devtools">devtools</a> (untested, please let me know!)
 
 `> install_github("cartodb-r", "Vizzuality")`
 
@@ -95,6 +98,12 @@ To install this package from the source code available here
 - Boolean whether to convert your data from a JSON string to data.frame
 
 - default = TRUE
+
+*urlOnly*
+
+- Boolean whether to only create and return the URL
+
+- default = FALSE
 
 *sql*
 
