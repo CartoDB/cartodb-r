@@ -8,18 +8,33 @@ Access data from a CartoDB table
 This function takes a table, a table and columns, or an sql statement and returns the data from CartoDB. Optionally, asJSON when set to TRUE will allow you to receive a JSON object not a data.matrix from queries.
 }
 \usage{
-cartodb.collection(table.name = NULL, table.columns = NULL, table.sql = NULL, asJson = FALSE)
+cartodb.collection(name = NULL, columns = NULL, geomAs = NULL, omitNull = FALSE, limit = NULL, sql = NULL, method = "dataframe", urlOnly = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{name}{
-    The name of a table you have in CartoDB
+  The name of a table you have in CartoDB
 }
-  \item{table.columns}{
-%%     ~~Describe \code{table.columns} here~~
+  \item{columns}{
+  String vector of column names to include in your result. If using geomAs parameter, you must include 'the_geom' here
 }
-  \item{table.sql}{
-%%     ~~Describe \code{table.sql} here~~
+  \item{geomAs}{
+  Defines how you want your geometries returned. Accepted values include, "the_geom", "WKB", "WKT", "GeoJSON", "XY"
+}
+  \item{omitNull}{
+  Boolean when TRUE omits records with NULL geometry values
+}
+  \item{limit}{
+  Integer that limits the number of records returned
+}
+  \item{sql}{
+  Query your account with direct SQL statements. Using sql overrides all parameter above.
+}
+  \item{method}{
+  Defines how you want your data returned. Methods include, "dataframe", "GeoJson". If you use "GeoJson", geomAs should be left NULL and you must include the_geom in your sql or columns parameter if either are included.
+}
+  \item{urlOnly}{
+  Returns the query URL string but doesn't fetch the data
 }
 }
 \author{
