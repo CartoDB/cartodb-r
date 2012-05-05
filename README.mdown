@@ -233,4 +233,6 @@ lines(riyadh.rails, col="burlywood3", lwd=3)
 
 - POST methods
 
+- Add direct row (data.frame) -> insert or -> update methods. E.g. cartodb.row.update(row=my.data.frame), cartodb.row.insert(row=my.data.frame)
+
 
