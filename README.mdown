@@ -225,9 +225,12 @@ lines(riyadh.rails, col="burlywood3", lwd=3)
 
 - Enable write methods
 
-- Better type casting from JSON to R (all string :( now)
-
 - Set remote map style method
 
 - Get embed/share url method
+
+- Move to an external SQL package for handling R types -> SQL types for insert statements
+
+- POST methods
+
 
