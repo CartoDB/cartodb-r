@@ -253,6 +253,8 @@ record
 
 ### TODOs
 
+- add geomAs method to cartodb.row.get
+
 - Set remote map style method?
 
 - Get embed/share url method
