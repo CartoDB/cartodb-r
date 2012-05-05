@@ -57,6 +57,8 @@ To install this package from the source code available here
 
 `cartodb("your-account-name", api.key="optional-key-for-writes")`
 
+- *api.key* enables writes and also lets you read from private tables
+
 **Testing a connection**
 
 `cartodb.test()`
@@ -251,9 +253,7 @@ record
 
 ### TODOs
 
-- Enable write methods
-
-- Set remote map style method
+- Set remote map style method?
 
 - Get embed/share url method
 
