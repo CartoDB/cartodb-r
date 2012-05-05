@@ -221,6 +221,34 @@ lines(riyadh.roads, col="#3a3a3a", lwd=1)
 lines(riyadh.rails, col="burlywood3", lwd=3)
 ```
 
+
+### Writing data to CartoDB using R
+
+To write data to your CartoDB tables, you will need to get and API Key, you can find it by clicking "Your api keys" in your CartoDB dashboard.
+
+Below, see how we insert a new record into CartoDB and then update some values in that record.
+
+```R
+library(RCurl)
+library(RJSONIO)
+library(CartoDB)
+
+# Setup a CartoDB connection with authenticated API Key access
+your_api_key = "{your_api_key}"
+cartodb_account_name = "examples"; 
+cartodb(cartodb_account_name, api.key=your_api_key)
+
+# Insert a new row into a table called us_cities that has columns name, latitude, and longitude. Inserts return the cartodb_id of the newly created record
+cartodb_id <- cartodb.row.insert(name="us_cities",columns=list("name","latitude","longitude"),values=list("New York",40.714,-74.006))
+
+# You could perform this in the same insert, but to demonstrate updates, here we will turn the coordinates into a geometry with an update
+cartodb.row.update(name="us_cities",cartodb_id=cartodb_id,columns=list("the_geom"),values=list("ST_SetSRID(ST_Point(longitude,latitude),4326) "),quoteChars=FALSE)
+
+# Now we can get the full record we just created
+record <- cartodb.row.get(name="us_cities",cartodb_id=cartodb_id)
+record
+```
+
 ### TODOs
 
 - Enable write methods
