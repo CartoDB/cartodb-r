@@ -20,6 +20,7 @@ function(account.name, api.key = NULL) {
 
 cartodb.test <- function() {
     url <- cartodbSqlApi()
+    warning(url)
     records<-getURL(URLencode(paste(url,"q=SELECT 1",sep='')))
     json<-fromJSON(records[[1]])
     response<-data.frame(success=FALSE)
