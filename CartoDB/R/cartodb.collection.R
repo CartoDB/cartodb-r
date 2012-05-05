@@ -48,7 +48,8 @@ function(name = NULL, columns = NULL, geomAs = NULL, omitNull = FALSE, limit = N
             cartodb.collection.json<-fromJSON(cartodb.collection.get[[1]])
             if ( 'rows' %in% names(cartodb.collection.json)) {
                 # convert json list of lists to a data.frame
-                df <- data.frame(do.call(rbind,lapply(cartodb.collection.json$rows,function(x) t(as.matrix(x,ncol=length(cartodb.collection.json$rows[[1]])))))) 
+                #df <- data.frame(do.call(rbind,lapply(cartodb.collection.json$rows,function(x) t(as.matrix(x,ncol=length(cartodb.collection.json$rows[[1]])))))) 
+                df <- data.frame(t(sapply(cartodb.collection.json$rows[1:length(cartodb.collection.json$rows)],c)))
                 # remove null columns from geom transformations
                 if (!is.null(name) & is.character(name)){
                     if(!is.list(columns)) {
