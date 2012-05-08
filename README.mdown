@@ -255,6 +255,8 @@ record
 
 - add geomAs method to cartodb.row.get
 
+- Add direct row (data.frame) -> insert or -> update methods. E.g. cartodb.row.update(row=my.data.frame), cartodb.row.insert(row=my.data.frame)
+
 - Set remote map style method?
 
 - Get embed/share url method
@@ -262,7 +264,5 @@ record
 - Move to an external SQL package for handling R types -> SQL types for insert statements
 
 - POST methods
-
-- Add direct row (data.frame) -> insert or -> update methods. E.g. cartodb.row.update(row=my.data.frame), cartodb.row.insert(row=my.data.frame)
 
 

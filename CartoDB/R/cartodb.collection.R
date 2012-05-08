@@ -40,6 +40,7 @@ function(name = NULL, columns = NULL, geomAs = NULL, omitNull = FALSE, limit = N
         if (method=="GeoJSON"){
             url <- URLencode(paste(url,"format=geojson&q=",sql,sep=''))
             if (urlOnly==TRUE) return(url)
+            # Enable cartodb.sql here
             cartodb.collection.get<-getURL(url)
         } else if(method=="dataframe"){
             df<-cartodb.sql(sql)
