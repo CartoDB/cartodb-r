@@ -1,6 +1,6 @@
 ## Mapping OSM data from CartoDB
 
-<img src="http://i.imgur.com/CuOT3.png" width="900px"/>
+<img src="http://cartodb.s3.amazonaws.com/tumblr/posts/stopfrisk.png" width="650px"/>
 
 ```R
 library(rgdal)
