@@ -1,4 +1,4 @@
-## Mapping OSM data from CartoDB
+## Mapping and plotting data side by side
 
 <img src="http://i.imgur.com/AuJJL.png" width="900px"/>
 
