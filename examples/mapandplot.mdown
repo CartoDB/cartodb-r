@@ -1,6 +1,6 @@
 ## Mapping OSM data from CartoDB
 
-<img src="http://cartodb.s3.amazonaws.com/tumblr/posts/stopfrisk.png" width="650px"/>
+<img src="http://i.imgur.com/AuJJL.png" width="650px"/>
 
 ```R
 library(rgdal)
@@ -14,6 +14,9 @@ library(classInt)
 # Setup our CartoDB Connection
 cartodb_account_name = "viz2"; 
 cartodb(cartodb_account_name)
+
+
+crs <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 
 # Get frisk density
 boroughsUrl <- cartodb.collection(sql = "SELECT the_geom,num_stops,boroname,borocode,shape_area FROM nyct2000 WHERE the_geom IS NOT NULL AND boroname != 'Staten Island' AND 0<num_stops", method="GeoJSON", urlOnly=TRUE)
@@ -33,7 +36,6 @@ nclr <- 4
 plotclr <- brewer.pal(nclr,"Set1")
 class <- classIntervals(as.numeric(frisk.hours$city_code), nclr, style="quantile")
 colcode2 <- findColours(class, plotclr, digits=4)
-colabs <- frisk.hours[frisk.hours$city_code==class$brks,]$city[1]
 
 op <- par(mfrow=c(1,2))
 plot(frisk.hours$hr, frisk.hours$ct, col=colcode2, pch=15,
