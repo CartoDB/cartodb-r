@@ -253,6 +253,8 @@ record
 
 ### TODOs
 
+- add instructions on putting API keys in ENV
+
 - add geomAs method to cartodb.row.get
 
 - Add direct row (data.frame) -> insert or -> update methods. E.g. cartodb.row.update(row=my.data.frame), cartodb.row.insert(row=my.data.frame)

@@ -1,14 +1,12 @@
 cartodb.row.get<-
-function(name=NULL,cartodb_id=NULL,columns=NULL,values=NULL,quoteChars=TRUE) {
+function(name=NULL,cartodb_id=NULL,columns=NULL,values=NULL,geomAs = NULL,quoteChars=TRUE) {
     # Methods to request a single row from CartoDB
     if (is.character(name)){
         url <- cartodbSqlApi()
         if (is.numeric(cartodb_id)){
-            sql<-paste("SELECT * FROM",name,"WHERE cartodb_id = ",cartodb_id,"LIMIT 1")
-            # cartodb.row.raw<-getURL(paste(url,"q=",sql,sep=""))
-            # cartodb.row.json<-fromJSON(cartodb.row.raw[[1]])
-            # cartodb.row.df <- data.frame(t(sapply(cartodb.row.json$rows[[1]],c)))
-            cartodb.row.df <- cartodb.sql(sql)
+            sql<-cartodb.paramsToSql(name=name,geomAs=geomAs,limit=1)
+            # sql<-paste("SELECT * FROM",name,"WHERE cartodb_id = ",cartodb_id,"LIMIT 1")
+            cartodb.row.df <- cartodb.df(sql)
             return(cartodb.row.df)
         } else if (is.list(columns) && is.list(values)){
             if (length(columns) != length(values)){
@@ -29,7 +27,7 @@ function(name=NULL,cartodb_id=NULL,columns=NULL,values=NULL,quoteChars=TRUE) {
                     }
                 }
                 sql<-paste("SELECT * FROM",name,"WHERE",where,"LIMIT 1")
-                cartodb.row.df <- cartodb.sql(sql)
+                cartodb.row.df <- cartodb.df(sql)
                 # cartodb.row.raw<-getURL(paste(url,"q=",sql,sep=""))
                 # cartodb.row.json<-fromJSON(cartodb.row.raw[[1]])
                 # cartodb.row.df <- data.frame(t(sapply(cartodb.row.json$rows[[1]],c)))
@@ -57,7 +55,7 @@ function(name=NULL,columns=NULL,values=NULL, quoteChars=TRUE) {
                         }
                     }
                 }
-                df <- cartodb.sql(sql=paste("INSERT INTO ",name," (",paste(columns,sep="",collapse=","),")", " VALUES (",paste(values,sep="",collapse=","),") RETURNING cartodb_id",sep=""))
+                df <- cartodb.df(sql=paste("INSERT INTO ",name," (",paste(columns,sep="",collapse=","),")", " VALUES (",paste(values,sep="",collapse=","),") RETURNING cartodb_id",sep=""))
                 if (is.null(df)){
                     return(NULL)
                 } else {
@@ -70,7 +68,7 @@ function(name=NULL,columns=NULL,values=NULL, quoteChars=TRUE) {
             warning('you must supply values for your row')
         } 
     } else {
-        warning('cartodb.row.insert is a table based method, use cartodb.sql for arbitrary inserts')
+        warning('cartodb.row.insert is a table based method, use cartodb.df for arbitrary inserts')
     }
 }
 
@@ -102,7 +100,7 @@ function(name=NULL, cartodb_id=NULL, columns=NULL,values=NULL, quoteChars=TRUE) 
                     sql<-paste("UPDATE ",name, setstat, " WHERE cartodb_id=",cartodb_id,sep="")
                     # cartodb.update.raw<-getURL(paste(url,"q=",sql,sep=""))
                     # cartodb.update.json<-fromJSON(cartodb.update.raw[[1]])
-                    cartodb.update.df = cartodb.sql(sql)
+                    cartodb.update.df = cartodb.df(sql)
                     return(cartodb.update.df)
                     # if("rows" %in% names(cartodb.update.json)){
                     #     return(TRUE)
@@ -120,6 +118,6 @@ function(name=NULL, cartodb_id=NULL, columns=NULL,values=NULL, quoteChars=TRUE) 
             warning('you must supply a cartodb_id')
         }
     } else {
-        warning('cartodb.row.update is a table based method, use cartodb.sql for arbitrary updates')
+        warning('cartodb.row.update is a table based method, use cartodb.df for arbitrary updates')
     }
 }

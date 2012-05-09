@@ -1,6 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 export('cartodb')
-export('cartodb.sql')
+export('cartodb.df')
 export('cartodb.collection')
 export('cartodb.row.insert')
 export('cartodb.row.update')
