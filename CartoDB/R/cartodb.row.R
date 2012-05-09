@@ -1,5 +1,5 @@
 cartodb.row.get<-
-function(name=NULL,cartodb_id=NULL,columns=NULL,values=NULL,geomAs = NULL,quoteChars=TRUE) {
+function(name=NULL,cartodb_id=NULL,columns=NULL,values=NULL,geomAs=NULL,quoteChars=TRUE) {
     # Methods to request a single row from CartoDB
     if (is.character(name)){
         url <- cartodbSqlApi()
@@ -26,7 +26,11 @@ function(name=NULL,cartodb_id=NULL,columns=NULL,values=NULL,geomAs = NULL,quoteC
                         where <- paste(where,values[[i]])
                     }
                 }
-                sql<-paste("SELECT * FROM",name,"WHERE",where,"LIMIT 1")
+                geom <- ","
+                if(!is.null(geomAs) && geomAs!="the_geom"){
+                    geom <- paste(geom,cartodb.transformGeom(geomAs),sep="")
+                }
+                sql<-paste("SELECT *",geom,"FROM",name,"WHERE",where,"LIMIT 1")
                 cartodb.row.df <- cartodb.df(sql)
                 # cartodb.row.raw<-getURL(paste(url,"q=",sql,sep=""))
                 # cartodb.row.json<-fromJSON(cartodb.row.raw[[1]])
