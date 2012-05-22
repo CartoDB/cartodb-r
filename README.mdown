@@ -259,10 +259,7 @@ record
 
 - Set remote map style method?
 
-- Get embed/share url method
-
 - Move to an external SQL package for handling R types -> SQL types for insert statements
 
-- POST methods
 
 
