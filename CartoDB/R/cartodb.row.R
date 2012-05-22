@@ -2,9 +2,9 @@ cartodb.row.get<-
 function(name=NULL,cartodb_id=NULL,columns=NULL,values=NULL,geomAs=NULL,quoteChars=TRUE) {
     # Methods to request a single row from CartoDB
     if (is.character(name)){
-        url <- cartodbSqlApi()
+        url <- cartodb.sql.base()
         if (is.numeric(cartodb_id)){
-            sql<-cartodb.paramsToSql(name=name,geomAs=geomAs,limit=1)
+            sql<-cartodb.sql.fromParams(name=name,geomAs=geomAs,limit=1)
             # sql<-paste("SELECT * FROM",name,"WHERE cartodb_id = ",cartodb_id,"LIMIT 1")
             cartodb.row.df <- cartodb.df(sql)
             return(cartodb.row.df)
@@ -99,7 +99,7 @@ function(name=NULL, cartodb_id=NULL, columns=NULL,values=NULL, quoteChars=TRUE) 
                         }
                         setstat <- paste(setstat,columns[[i]],"=",values[[i]],sep="")
                     }
-                    url <- cartodbSqlApi()
+                    url <- cartodb.sql.base()
                     
                     sql<-paste("UPDATE ",name, setstat, " WHERE cartodb_id=",cartodb_id,sep="")
                     # cartodb.update.raw<-getURL(paste(url,"q=",sql,sep=""))

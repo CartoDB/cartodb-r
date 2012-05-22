@@ -1,10 +1,10 @@
 cartodb.collection <-
 function(name = NULL, columns = NULL, geomAs = NULL, omitNull = FALSE, limit = NULL, sql = NULL, method = "dataframe",urlOnly=FALSE) {
     if (is.character(name)){
-        sql<-cartodb.paramsToSql(name=name,geomAs=geomAs,columns=columns,omitNull=omitNull,limit=limit)
+        sql<-cartodb.sql.fromParams(name=name,geomAs=geomAs,columns=columns,omitNull=omitNull,limit=limit)
     }
     if (is.character(sql)){
-        url <- cartodbSqlApi()
+        url <- cartodb.sql.base()
         if (method=="GeoJSON"){
             url <- URLencode(paste(url,"format=geojson&q=",sql,sep=''))
             if (urlOnly==TRUE) return(url)

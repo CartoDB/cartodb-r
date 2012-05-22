@@ -179,7 +179,7 @@ library(RCurl)
 library(RJSONIO)
 library(CartoDB)
 
-img <- readPNG(cartodb.tile("california_zips",41,100,8))
+img <- readPNG(cartodb.tiles.tile("california_zips",41,100,8))
 r = as.raster(img[,,1:3])
 r[img[,,4] == 0] = "white"
 
@@ -254,8 +254,6 @@ record
 ### TODOs
 
 - add instructions on putting API keys in ENV
-
-- add geomAs method to cartodb.row.get
 
 - Add direct row (data.frame) -> insert or -> update methods. E.g. cartodb.row.update(row=my.data.frame), cartodb.row.insert(row=my.data.frame)
 
