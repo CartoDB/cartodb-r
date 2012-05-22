@@ -13,12 +13,12 @@ function(name=NULL,sql = NULL, style=NULL) {
                 warning('Embedded maps rely on the column, the_geom_webmercator. Be sure that it is included in your results.')
             }
             if(is.character(style)){
-                cartodb.link <- paste(cartodb.tile,"&style=",URLencode(style),sep='')
+                cartodb.link <- paste(cartodb.link,"&style=",URLencode(style),sep='')
             }
         } else { 
             cartodb.link <- URLencode(paste(url,name,"/embed_map",sep=''))
             if(is.character(style)){
-                cartodb.link <- paste(cartodb.tile,"?style=",URLencode(style),sep='')
+                cartodb.link <- paste(cartodb.link,"?style=",URLencode(style),sep='')
             }
         }
         if(url.exists(cartodb.link) != TRUE){
