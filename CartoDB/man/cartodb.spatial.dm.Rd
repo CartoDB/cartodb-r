@@ -8,7 +8,7 @@ Given a table, it can return the upper half of a spatial matrix in meters
 Hopefully helpful for spatial stats where better distance methods from geoms are needed.
 }
 \usage{
-cartodb.spatial.dm(name = NULL, method="CENTROID", limit=100)
+cartodb.spatial.dm(name = NULL, method="CENTROID", limit=NULL)
 }
 \arguments{
   \item{name}{
@@ -18,7 +18,7 @@ cartodb.spatial.dm(name = NULL, method="CENTROID", limit=100)
   Where in the geometry to measure the distance between each geometry. For points, it doesn't matter. For polygons, CENTROID is the default. EXACT will use the precise closest points on the polygon. This function needs further optimization, as it is very slow for large tables and on free accounts. Stay tuned for updates.
 }
   \item{limit}{
-  Number of records to compare. Defaults to 100 to try and keep the speed of the query higher except for cases when you know you are ready for the output.
+  Number of records to compare. Defaults is NULL, but with complex polygons or large tables you should test with a limit first.
 }
 }
 \author{

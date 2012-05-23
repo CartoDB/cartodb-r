@@ -151,6 +151,18 @@ table_name <- "monarch"
 data <- cartodb.collection(table_name, geomAs="XY", limit=10)
 ```
 
+Calculate the upper half of a distance matrix for one of your tables, based on meters on a spherical geometry
+
+```R
+# Setup your connection
+cartodb_account_name = "examples"
+cartodb(cartodb_account_name)
+
+# Download the first 10 records of a table with the_geom transformed to X,Y coordinates
+table_name <- "monarch"
+data <- cartodb.spatial.dm(table_name)
+```
+
 A very simple map of butterflies in Mexico
 
 ```R
