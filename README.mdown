@@ -49,7 +49,7 @@ To install this package from the source code available here
 
 - alternatively you can install straight from GitHub using <a href="https://github.com/hadley/devtools">devtools</a> (untested, please let me know!)
 
-`> install_github("cartodb-r", "Vizzuality")`
+`> install_github("Vizzuality/cartodb-r/CartoDB")`
 
 ### Methods
 
