@@ -18,14 +18,14 @@ cartodb.maps.link(name=NULL,sql = NULL, style=NULL)
   An SQL query for querying dynamic tiles from CartoDB
 }
   \item{style}{
-  A Carto style string to restyle tiles dynamically (see http://developers.cartodb.com/)
+  A Carto style string to restyle tiles dynamically (see https://carto.com/docs/)
 }
 }
 \author{
 Andrew Hill <andrew@vizzuality.com>
 }
 \examples{
-cartodb_account_name = "examples"; 
+cartodb_account_name = "examples";
 cartodb(cartodb_account_name)
 tile<-cartodb.maps.link("earthquakes")
 "http://examples.cartodb.com/tables/earthquakes/embed_map"
