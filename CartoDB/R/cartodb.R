@@ -3,12 +3,12 @@ function(account.name, api.key = NULL) {
     .CartoDB$data <- list(
         api.key=NULL,
         account.name=NULL,
-        api.sql=".cartodb.com/api/v2/sql",
-        api.tiles=".cartodb.com/tiles/",
-        api.maps=".cartodb.com/tables/"
+        api.sql=".carto.com/api/v2/sql",
+        api.tiles=".carto.com/tiles/",
+        api.maps=".carto.com/tables/"
         )
     if(is.character(api.key)){
-        .CartoDB$data$api.key<-api.key   
+        .CartoDB$data$api.key<-api.key
     } else{
         warning("Without an API key you are limited to read-only")
     }

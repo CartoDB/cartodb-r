@@ -1,6 +1,6 @@
-## This package provides an R wrapper to the cartodb.com APIs.
+## This package provides an R wrapper to the CARTO.com APIs.
 
-For more information on the these APIs see http://developers.cartodb.com/
+For more information on the these APIs see https://carto.com/docs/
 
 <img src="http://i.imgur.com/x3SWS.png" alt="" title="Hosted by imgur.com" width="900px" />
 
@@ -19,15 +19,15 @@ For more information on the these APIs see http://developers.cartodb.com/
 Andrew Hill
 
 - Email: andrew@vizzuality.com
- 
+
 ### Requirements
 
 The CartoDB R package requires the following external packages
 
 - RCurl
-   
+
 - RJSONIO
-      
+
 ### Suggested
 
 Using rgeos can greatly improve mapping capability in R. It also plays nice with CartoDB, as queries accept geomAs='WKT', which can be directly used in rgeos.
@@ -35,13 +35,13 @@ Using rgeos can greatly improve mapping capability in R. It also plays nice with
 - rgeos
 
 ### Installation from source
-       
+
 To install this package from the source code available here
 
 - download the file
-    
+
 - change directory to the location downloaded
-            
+
 `> install.packages("CartoDB_1.4.tar.gz", repos=NULL, type="source")`
 
 
@@ -211,7 +211,7 @@ library(RJSONIO)
 library(CartoDB)
 
 # Setup our CartoDB Connection
-cartodb_account_name = "viz2"; 
+cartodb_account_name = "viz2";
 cartodb(cartodb_account_name)
 
 # CartoDB the_geom columns are always the following proj string
@@ -249,7 +249,7 @@ library(CartoDB)
 
 # Setup a CartoDB connection with authenticated API Key access
 your_api_key = "{your_api_key}"
-cartodb_account_name = "examples"; 
+cartodb_account_name = "examples";
 cartodb(cartodb_account_name, api.key=your_api_key)
 
 # Insert a new row into a table called us_cities that has columns name, latitude, and longitude. Inserts return the cartodb_id of the newly created record

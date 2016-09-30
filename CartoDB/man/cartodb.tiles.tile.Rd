@@ -27,7 +27,7 @@ cartodb.tiles.tile(name = NULL, x = NULL, y = NULL, z = NULL, sql = NULL, style=
   An SQL query for querying dynamic tiles from CartoDB
 }
   \item{style}{
-  A Carto style string to restyle tiles dynamically (see http://developers.cartodb.com/)
+  A Carto style string to restyle tiles dynamically (see https://carto.com/docs/)
 }
   \item{method}{
   The format of the data you want returned, "bytes". "png" is in development
@@ -40,7 +40,7 @@ cartodb.tiles.tile(name = NULL, x = NULL, y = NULL, z = NULL, sql = NULL, style=
 Andrew Hill <andrew@vizzuality.com>
 }
 \examples{
-cartodb_account_name = "examples"; 
+cartodb_account_name = "examples";
 cartodb(cartodb_account_name)
 tile<-cartodb.tiles.tile("earthquakes", 0, 0, 0, urlOnly=TRUE)
 tile
